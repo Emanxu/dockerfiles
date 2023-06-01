@@ -1,0 +1,52 @@
+version: "3"
+services:
+# 数据库/基础配置
+  db:
+    image: mariadb:focal
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${passwd_root}
+      - MYSQL_USER=${user}
+      - MYSQL_PASSWORD=${passwd_user}
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:alpine
+    restart: always
+    volumes:
+      - ./data/redis:/data
+
+
+# 以下是服务
+# 独角数卡服务
+
+  dujiaoka:
+    image: stilleshan/dujiaoka
+    environment:
+        # - INSTALL=false
+        - INSTALL=true
+        # - MODIFY=true
+    volumes:
+      - ./env.conf:/dujiaoka/.env
+      - ./data/shop/uploads:/dujiaoka/public/uploads
+      - ./data/shop/storage:/dujiaoka/storage
+    ports:
+      - 55678:80
+    restart: always
+    depends_on:
+      - db
+      - redis
+ 
+# USDT支付系统服务
+  epusdt:
+    image: stilleshan/epusdt
+    restart: always
+    volumes:
+      - ./epusdt/epusdt.conf:/app/.env
+    ports:
+      - 55679:8000
+    depends_on:
+      - db
+      - redis
