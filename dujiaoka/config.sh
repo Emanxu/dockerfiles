@@ -22,12 +22,15 @@ export tg_bot_token=$tg_bot_token
 export tg_manage=$tg_manage
 
 
-# 注意格式，例如文件内 ${user} 在前面， 替换为后面的 $user环境变量的值
-# 替换 dujiaoka 上的环境变量 --> env.conf
+# env.conf.example --> env.conf
 envsubst < env.conf.example > env.conf
 
-# 替换 epusdt 上的环境变量 需要 sed --> epusdt.conf
-envsubst < epusdt/epusdt.conf.example > epusdt.conf
+# epusdt/epusdt.conf.example --> epusdt.conf
+envsubst < epusdt/epusdt.conf.example > epusdt/epusdt.conf
+
+# docker-compose.yml.example 文件 --> docker-compose.yml
+envsubst < docker-compose.yml.example > docker-compose.yml
+
 
 echo "Done!!!"
 
