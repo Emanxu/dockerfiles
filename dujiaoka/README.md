@@ -23,4 +23,19 @@ chmod -R 777 env.conf
 ``` bash
 docker-compose up -d
 ```
+5. Enter epusdt & run the command
+``` bash
+cd epusdt
+docker exec -i YOUR_DB_SERVER -c 'exec mysql -uepusdt -pCHANGE_YOUR_PASSWORD epusdt' < epusdt.sql
+```
+6. Restart
+``` bash
+# restart
+docker-compose down
+docker-compose up -d
+# or
+docker-compose restart
 
+# check server status
+docker logs -f YOUR_Epusdt_SERVER
+```
