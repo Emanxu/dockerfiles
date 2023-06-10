@@ -9,7 +9,7 @@ WORKDIR /app
 
 RUN set -xe \
     && git clone https://github.com/PoorThatcher/vmqphp.git \
-    && chmod -R 755 /app/vmqphp
+    && chmod -R 755 /app/vmqphp \
     && mkdir -p /app/vmqphp/log \
     && touch /app/vmqphp/log/access.log \
     && touch /app/vmqphp/log/error.log \
