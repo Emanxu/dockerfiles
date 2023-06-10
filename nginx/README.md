@@ -60,7 +60,7 @@ docker run -d --name=nginx --restart=always \
 https://github.com/yeszao/dnmp
 
 #### nginx 常规样本
-``` json
+```
 server
     {
         listen 80;
@@ -149,7 +149,7 @@ server
 ```
 
 #### Nginx 反向代理其他容器样本
-``` json
+```
 upstream dockername { 
     server 127.0.0.1:8080; # 端口改为docker容器提供的端口
 }
