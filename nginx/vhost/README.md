@@ -1,0 +1,1 @@
+存放站点 conf 的地方，自动被引用到 nginx/conf/nginx.conf
