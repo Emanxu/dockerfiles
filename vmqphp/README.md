@@ -32,7 +32,8 @@ docker exec -i <db-ID> sh -c 'exec mysql -u<USER> -p<PASSWD> vmq' < vmq.sql
 
 #### 注意事项
 PHP5.6 - 7.3 不支持7.4
-mysql
+mysql-5.6 MariaDB-10.11.2
+nginx-1.18
 伪静态要设置好为thinkphp
 ``` 
 location / {
