@@ -2,11 +2,11 @@ version: '3'
 services:
 
   web:
-    image: yaga/tokenpay
+    image: "poorthatcher/tokenpay:ubuntu"
     container_name: tokenpay
     ports:
      - "5000:80"
-     - "5001:9001"
+     # - "5001:9001" # for supervisor web
     volumes:
      - ./appsettings.json:/tokenpay/appsettings.json
      - ./EVMChains.json:/tokenpay/EVMChains.json
